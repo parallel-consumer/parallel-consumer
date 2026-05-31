@@ -8,7 +8,7 @@
     <parent>
         <groupId>io.plurima.parallelconsumer</groupId>
         <artifactId>parallel-consumer-parent</artifactId>
-        <version>0.5.4.0-SNAPSHOT</version>
+        <version>0.5.4.0</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>

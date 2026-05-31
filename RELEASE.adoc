@@ -1,23 +1,51 @@
 = Releasing
 
-Releases are automated through a Semaphore Task and are always built from latest commit of the master branch.
+Releases are published from the community fork under the `io.plurima.parallelconsumer` Maven group.
 
+- Verify that `CHANGELOG.adoc`, `README.adoc`, and `src/docs/README_TEMPLATE.adoc` are up-to-date with the release.
+- Verify the working tree is clean.
+- Set the release version, for example:
++
+```
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home ./mvnw --batch-mode versions:set -DnewVersion=0.5.4.0 -DprocessAllModules=true -DgenerateBackupPoms=false
+```
+- Build locally:
++
+```
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home ./mvnw --batch-mode -DskipTests package
+```
+- Publish to Maven Central:
++
+```
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home ./mvnw --batch-mode clean deploy -Pmaven-central -DperformRelease=true -DskipTests
+```
+- Wait for Central Portal validation and publish.
+- Verify the release is available on Maven Central:
++
+```
+https://repo1.maven.org/maven2/io/plurima/parallelconsumer/parallel-consumer-parent/
+https://repo1.maven.org/maven2/io/plurima/parallelconsumer/parallel-consumer-core/
+```
+- Tag the release and create the GitHub release.
+- Set the next development version, for example:
++
+```
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home ./mvnw --batch-mode versions:set -DnewVersion=0.5.4.1-SNAPSHOT -DprocessAllModules=true -DgenerateBackupPoms=false
+```
 
-- Verify that Changelog.md and Readme.md are up-to-date with all the changes in the release. If not update them through normal PR process.
-- Go to Tasks in Parallel Consumer project on Semaphore CI - https://semaphore.ci.confluent.io/projects/parallel-consumer/schedulers
-- Click on Run Now for the Release task
-- Enter Release Version (e.g. 0.5.3.3)
-- Enter Next Development Version (e.g. 0.5.3.4-SNAPSHOT)
-- Click Run the Task
-- The task will create a Tag branch and corresponding Semaphore Job will start automatically
-- Once the build job for the Tag is complete - go to the Semaphore CI page for that job and click Publish to Maven Central in the Promotions box.
-- Wait for the promotion to complete - note that it may show as failed on Semaphore - but actually succeed - verify logs on Semaphore
-- Wait for Sonatype to publish from it's staging area (~15 minutes) https://repo1.maven.org/maven2/io/confluent/parallelconsumer/parallel-consumer-parent/[repo1 link]
-- Verify the release is available on Maven Central https://repo1.maven.org/maven2/io/confluent/parallelconsumer/parallel-consumer-parent/[repo1 link]
-- Create the release on GH from the tag
-- Paste in the details from the changelog, save, share as discussion
-- Announce on slack (community #parallel-consumer and internal channels), mailing list, twitter
+== Snapshots
 
+Snapshots are deployed to Sonatype Central snapshots:
+
+```
+JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-17.jdk/Contents/Home ./mvnw --batch-mode -DskipTests deploy
+```
+
+Verify snapshot metadata directly:
+
+```
+https://central.sonatype.com/repository/maven-snapshots/io/plurima/parallelconsumer/parallel-consumer-core/0.5.4.0-SNAPSHOT/maven-metadata.xml
+```
 
 == Troubleshooting
 

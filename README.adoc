@@ -23,7 +23,7 @@ TIP:: Editing template file
 endif::[]
 
 
-= Confluent Parallel Consumer
+= Parallel Consumer
 :icons:
 :toc: macro
 :toclevels: 3
@@ -44,7 +44,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-// image:https://maven-badges.herokuapp.com/maven-central/io.confluent.parallelconsumer/parallel-consumer-parent/badge.svg?style=flat[link=https://mvnrepository.com/artifact/io.confluent.parallelconsumer/parallel-consumer-parent,Latest Parallel Consumer on Maven Central]
+// image:https://maven-badges.herokuapp.com/maven-central/io.plurima.parallelconsumer/parallel-consumer-parent/badge.svg?style=flat[link=https://mvnrepository.com/artifact/io.plurima.parallelconsumer/parallel-consumer-parent,Latest Parallel Consumer on Maven Central]
 
 [WARNING]
 ====
@@ -394,25 +394,25 @@ We also encourage participation, so if you have any feature ideas etc, please ge
 NOTE: We are very interested to hear about your experiences!
 And please vote on your favourite issues!
 
-If you have questions, head over to the https://launchpass.com/confluentcommunity[Confluent Slack community], or raise an https://github.com/confluentinc/parallel-consumer/issues[issue] on GitHub.
+If you have questions or issues, raise them at https://github.com/parallel-consumer/parallel-consumer/issues[GitHub Issues].
 
 == License
 
-This library is copyright Confluent Inc, and licensed under the Apache License Version 2.0.
+This library is licensed under the Apache License Version 2.0.
 
 == Usage
 
 === Maven
 
-This project is available in maven central, https://repo1.maven.org/maven2/io/confluent/parallelconsumer/[repo1], along with SNAPSHOT builds (starting with 0.5-SNAPSHOT) in https://oss.sonatype.org/content/repositories/snapshots/io/confluent/parallelconsumer/[repo1's SNAPSHOTS repo].
+This project is available in Maven Central under the `io.plurima.parallelconsumer` group. Snapshot builds are published to Sonatype Central's snapshots repository: https://central.sonatype.com/repository/maven-snapshots/.
 
-Latest version can be seen https://search.maven.org/artifact/io.confluent.parallelconsumer/parallel-consumer-core[here].
+Latest released versions can be seen at https://central.sonatype.com/search?q=io.plurima.parallelconsumer[Central Search].
 
 Where `${project.version}` is the version to be used:
 
-* group ID: `io.confluent.parallelconsumer`
+* group ID: `io.plurima.parallelconsumer`
 * artifact ID: `parallel-consumer-core`
-* version: image:https://maven-badges.herokuapp.com/maven-central/io.confluent.parallelconsumer/parallel-consumer-parent/badge.svg?style=flat[link=https://mvnrepository.com/artifact/io.confluent.parallelconsumer/parallel-consumer-parent,Latest Parallel Consumer on Maven Central]
+* version: `0.5.4.0`
 
 .Core Module Dependency
 [source,xml,indent=0]
@@ -1545,6 +1545,14 @@ NOTE:: Dependency version bumps are not listed here.
 ifndef::github_name[]
 toc::[]
 endif::[]
+
+== 0.5.4.0
+
+=== Release
+
+* Publish community fork under the `io.plurima.parallelconsumer` Maven group.
+* Add Sonatype Central snapshot and release publishing configuration.
+* Update module metadata, SCM, issue tracker, and Maven usage documentation for the community fork.
 
 == 0.5.3.4
 

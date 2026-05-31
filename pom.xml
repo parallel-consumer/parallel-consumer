@@ -10,7 +10,7 @@
     <groupId>io.plurima.parallelconsumer</groupId>
     <artifactId>parallel-consumer-parent</artifactId>
     <name>Parallel Consumer (Community Fork)</name>
-    <version>0.5.4.0-SNAPSHOT</version>
+    <version>0.5.4.0</version>
     <description>Parallel Apache Kafka client wrapper with client side queueing, a simpler consumer/producer API with key concurrency and extendable non-blocking IO processing.
     </description>
     <url>https://github.com/parallel-consumer/parallel-consumer</url>
