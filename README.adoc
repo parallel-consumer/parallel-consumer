@@ -417,7 +417,7 @@ Where `${project.version}` is the version to be used:
 .Core Module Dependency
 [source,xml,indent=0]
         <dependency>
-            <groupId>io.confluent.parallelconsumer</groupId>
+            <groupId>io.plurima.parallelconsumer</groupId>
             <artifactId>parallel-consumer-core</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -425,7 +425,7 @@ Where `${project.version}` is the version to be used:
 .Reactor Module Dependency
 [source,xml,indent=0]
         <dependency>
-            <groupId>io.confluent.parallelconsumer</groupId>
+            <groupId>io.plurima.parallelconsumer</groupId>
             <artifactId>parallel-consumer-reactor</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -433,7 +433,7 @@ Where `${project.version}` is the version to be used:
 .Vert.x Module Dependency
 [source,xml,indent=0]
         <dependency>
-            <groupId>io.confluent.parallelconsumer</groupId>
+            <groupId>io.plurima.parallelconsumer</groupId>
             <artifactId>parallel-consumer-vertx</artifactId>
             <version>${project.version}</version>
         </dependency>

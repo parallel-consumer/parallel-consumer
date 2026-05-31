@@ -1,3 +1,11 @@
+
+/*-
+ * Copyright (C) 2020-2026 Parallel Consumer Community
+ */
+
+/*-
+ * Copyright (C) 2020-2022 Parallel Consumer Community
+ */
 package io.confluent.parallelconsumer.integrationTests.utils;
 
 /*-

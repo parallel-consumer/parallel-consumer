@@ -1,5 +1,13 @@
 
 /*-
+ * Copyright (C) 2020-2026 Parallel Consumer Community
+ */
+
+/*-
+ * Copyright (C) 2020-2025 Parallel Consumer Community
+ */
+
+/*-
  * Copyright (C) 2020-2025 Confluent, Inc.
  */
 

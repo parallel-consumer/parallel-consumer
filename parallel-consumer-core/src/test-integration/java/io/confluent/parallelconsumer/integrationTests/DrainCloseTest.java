@@ -1,5 +1,13 @@
 
 /*-
+ * Copyright (C) 2020-2026 Parallel Consumer Community
+ */
+
+/*-
+ * Copyright (C) 2020-2023 Parallel Consumer Community
+ */
+
+/*-
  * Copyright (C) 2020-2023 Confluent, Inc.
  */
 package io.confluent.parallelconsumer.integrationTests;

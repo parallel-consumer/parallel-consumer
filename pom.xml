@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2020-2024 Confluent, Inc.
+    Copyright (C) 2020-2026 Confluent, Inc.
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.confluent.parallelconsumer</groupId>
+    <groupId>io.plurima.parallelconsumer</groupId>
     <artifactId>parallel-consumer-parent</artifactId>
-    <name>Confluent Parallel Consumer</name>
-    <version>0.5.3.4-SNAPSHOT</version>
+    <name>Parallel Consumer (Community Fork)</name>
+    <version>0.5.4.0-SNAPSHOT</version>
     <description>Parallel Apache Kafka client wrapper with client side queueing, a simpler consumer/producer API with key concurrency and extendable non-blocking IO processing.
     </description>
-    <url>https://confluent.io</url>
+    <url>https://github.com/parallel-consumer/parallel-consumer</url>
     <inceptionYear>2020</inceptionYear>
 
     <organization>
-        <name>Confluent, Inc.</name>
-        <url>https://confluent.io</url>
+        <name>Parallel Consumer Community</name>
+        <url>https://github.com/parallel-consumer</url>
     </organization>
 
     <licenses>
@@ -50,14 +50,35 @@
             <organizationUrl>https://confluent.io</organizationUrl>
             <timezone>Europe/London</timezone>
         </developer>
+        <developer>
+            <id>sangreal</id>
+            <name>Martyn Ye</name>
+            <email>pc@plurima.io</email>
+        </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com:confluentinc/parallel-consumer.git</connection>
-        <developerConnection>scm:git:git@github.com:confluentinc/parallel-consumer.git</developerConnection>
-        <url>https://github.com/confluentinc/parallel-consumer.git</url>
-        <tag>0.5.3.2</tag>
+        <connection>scm:git:git://github.com/parallel-consumer/parallel-consumer.git</connection>
+        <developerConnection>scm:git:git@github.com:parallel-consumer/parallel-consumer.git</developerConnection>
+        <url>https://github.com/parallel-consumer/parallel-consumer</url>
+        <tag>HEAD</tag>
     </scm>
+    <issueManagement>
+        <system>GitHub Issues</system>
+        <url>https://github.com/parallel-consumer/parallel-consumer/issues</url>
+    </issueManagement>
+    <distributionManagement>
+        <repository>
+            <id>central</id>
+            <name>Sonatype Central</name>
+            <url>https://central.sonatype.com</url>
+        </repository>
+        <snapshotRepository>
+            <id>central</id>
+            <name>Sonatype Central Snapshots</name>
+            <url>https://central.sonatype.com/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     
     <properties>
@@ -201,7 +222,7 @@
                                             <onlyWhenRelease>false</onlyWhenRelease>
                                             <failWhenParentIsSnapshot>false</failWhenParentIsSnapshot>
                                             <excludes>
-                                                <exclude>io.confluent.parallelconsumer:</exclude>
+                                                <exclude>io.plurima.parallelconsumer:</exclude>
                                             </excludes>
                                         </requireReleaseDeps>
                                     </rules>
@@ -234,6 +255,12 @@
                                 <goals>
                                     <goal>sign</goal>
                                 </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
@@ -244,8 +271,7 @@
                         <extensions>true</extensions>
                         <configuration>
                             <publishingServerId>central</publishingServerId>
-                            <autoPublish>true</autoPublish>
-                            <waitUntil>published</waitUntil>
+                            <autoPublish>false</autoPublish>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -831,6 +857,13 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok-maven-plugin</artifactId>
                 <version>1.18.20.0</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.projectlombok</groupId>
+                        <artifactId>lombok</artifactId>
+                        <version>${lombok.version}</version>
+                    </dependency>
+                </dependencies>
                 <configuration>
                     <sourceDirectory>${project.basedir}/src/main/java</sourceDirectory>
                     <outputDirectory>${delombok.output}</outputDirectory>
