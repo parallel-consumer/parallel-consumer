@@ -1,8 +1,8 @@
-package io.confluent.parallelconsumer.integrationTests.utils;
 
 /*-
- * Copyright (C) 2020-2022 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
+package io.confluent.parallelconsumer.integrationTests.utils;
 
 import lombok.AccessLevel;
 import lombok.Getter;

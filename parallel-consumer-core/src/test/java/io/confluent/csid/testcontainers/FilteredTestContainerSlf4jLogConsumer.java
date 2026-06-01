@@ -1,7 +1,7 @@
 package io.confluent.csid.testcontainers;
 
 /*-
- * Copyright (C) 2020-2021 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
 
 import lombok.Getter;

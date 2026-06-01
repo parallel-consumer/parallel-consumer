@@ -1,7 +1,7 @@
 package io.confluent.parallelconsumer.offsets;
 
 /*-
- * Copyright (C) 2020-2022 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
 
 import com.google.common.truth.Truth;
@@ -20,6 +20,7 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.OffsetAndMetadata;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.parallel.Isolated;
 import org.junit.jupiter.api.parallel.ResourceAccessMode;
 import org.junit.jupiter.api.parallel.ResourceLock;
 import pl.tlinkowski.unij.api.UniLists;
@@ -39,6 +40,7 @@ import static io.confluent.parallelconsumer.state.PartitionStateManager.USED_PAY
  * @see OffsetEncodingBackPressureTest
  */
 @Slf4j
+@Isolated // messes with static offset encoding state - breaks other tests running in parallel
 class OffsetEncodingBackPressureUnitTest extends ParallelEoSStreamProcessorTestBase {
 
     @AfterAll

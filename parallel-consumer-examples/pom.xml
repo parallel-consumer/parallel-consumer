@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 
-    Copyright (C) 2020-2025 Confluent, Inc.
+    Copyright (C) 2020-2026 Parallel Consumer Community
 
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -9,12 +9,12 @@
 
     <parent>
         <artifactId>parallel-consumer-parent</artifactId>
-        <groupId>io.confluent.parallelconsumer</groupId>
-        <version>0.5.3.4-SNAPSHOT</version>
+        <groupId>io.plurima.parallelconsumer</groupId>
+        <version>0.5.4.0</version>
     </parent>
 
     <artifactId>parallel-consumer-examples</artifactId>
-    <name>Confluent Parallel Consumer Examples</name>
+    <name>Parallel Consumer Examples</name>
     <packaging>pom</packaging>
 
     <modules>

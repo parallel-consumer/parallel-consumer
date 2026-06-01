@@ -1,12 +1,8 @@
 
 /*-
- * Copyright (C) 2020-2024 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
 package io.confluent.parallelconsumer.integrationTests;
-
-/*-
- * Copyright (C) 2024 Confluent, Inc.
- */
 
 import io.confluent.csid.utils.ThreadUtils;
 import io.confluent.parallelconsumer.PCRetriableException;

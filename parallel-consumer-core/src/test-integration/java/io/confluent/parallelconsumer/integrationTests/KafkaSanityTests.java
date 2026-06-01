@@ -1,8 +1,8 @@
-package io.confluent.parallelconsumer.integrationTests;
-/*-
- * Copyright (C) 2020-2022 Confluent, Inc.
- */
 
+/*-
+ * Copyright (C) 2020-2026 Parallel Consumer Community
+ */
+package io.confluent.parallelconsumer.integrationTests;
 import io.confluent.parallelconsumer.offsets.OffsetMapCodecManager;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.RandomStringUtils;

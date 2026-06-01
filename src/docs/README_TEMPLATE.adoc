@@ -23,7 +23,7 @@ TIP:: Editing template file
 endif::[]
 
 
-= Confluent Parallel Consumer
+= Parallel Consumer
 :icons:
 :toc: macro
 :toclevels: 3
@@ -44,7 +44,7 @@ ifdef::env-github[]
 :warning-caption: :warning:
 endif::[]
 
-// image:https://maven-badges.herokuapp.com/maven-central/io.confluent.parallelconsumer/parallel-consumer-parent/badge.svg?style=flat[link=https://mvnrepository.com/artifact/io.confluent.parallelconsumer/parallel-consumer-parent,Latest Parallel Consumer on Maven Central]
+// image:https://maven-badges.herokuapp.com/maven-central/io.plurima.parallelconsumer/parallel-consumer-parent/badge.svg?style=flat[link=https://mvnrepository.com/artifact/io.plurima.parallelconsumer/parallel-consumer-parent,Latest Parallel Consumer on Maven Central]
 
 [WARNING]
 ====
@@ -392,25 +392,25 @@ We also encourage participation, so if you have any feature ideas etc, please ge
 NOTE: We are very interested to hear about your experiences!
 And please vote on your favourite issues!
 
-If you have questions, head over to the https://launchpass.com/confluentcommunity[Confluent Slack community], or raise an https://github.com/confluentinc/parallel-consumer/issues[issue] on GitHub.
+If you have questions or issues, raise them at https://github.com/parallel-consumer/parallel-consumer/issues[GitHub Issues].
 
 == License
 
-This library is copyright Confluent Inc, and licensed under the Apache License Version 2.0.
+This library is licensed under the Apache License Version 2.0.
 
 == Usage
 
 === Maven
 
-This project is available in maven central, https://repo1.maven.org/maven2/io/confluent/parallelconsumer/[repo1], along with SNAPSHOT builds (starting with 0.5-SNAPSHOT) in https://oss.sonatype.org/content/repositories/snapshots/io/confluent/parallelconsumer/[repo1's SNAPSHOTS repo].
+This project is available in Maven Central under the `io.plurima.parallelconsumer` group. Snapshot builds are published to Sonatype Central's snapshots repository: https://central.sonatype.com/repository/maven-snapshots/.
 
-Latest version can be seen https://search.maven.org/artifact/io.confluent.parallelconsumer/parallel-consumer-core[here].
+Latest released versions can be seen at https://central.sonatype.com/search?q=io.plurima.parallelconsumer[Central Search].
 
 Where `${project.version}` is the version to be used:
 
-* group ID: `io.confluent.parallelconsumer`
+* group ID: `io.plurima.parallelconsumer`
 * artifact ID: `parallel-consumer-core`
-* version: image:https://maven-badges.herokuapp.com/maven-central/io.confluent.parallelconsumer/parallel-consumer-parent/badge.svg?style=flat[link=https://mvnrepository.com/artifact/io.confluent.parallelconsumer/parallel-consumer-parent,Latest Parallel Consumer on Maven Central]
+* version: `0.5.4.0`
 
 .Core Module Dependency
 [source,xml,indent=0]
@@ -423,6 +423,60 @@ include::{project_root}/parallel-consumer-examples/parallel-consumer-example-rea
 .Vert.x Module Dependency
 [source,xml,indent=0]
 include::{project_root}/parallel-consumer-examples/parallel-consumer-example-vertx/pom.xml[tag=exampleDep]
+
+[[upgrade_from_confluent_coordinates]]
+=== Upgrading from Confluent Coordinates
+
+The community fork is published with new Maven coordinates, but the Java package names are unchanged.
+Application code should continue to import classes from `io.confluent.parallelconsumer`.
+
+For Maven users, change only the dependency coordinates:
+
+[source,xml,indent=0]
+----
+<dependency>
+    <groupId>io.plurima.parallelconsumer</groupId>
+    <artifactId>parallel-consumer-core</artifactId>
+    <version>0.5.4.0</version>
+</dependency>
+----
+
+For Gradle users:
+
+[source,groovy,indent=0]
+----
+implementation "io.plurima.parallelconsumer:parallel-consumer-core:0.5.4.0"
+----
+
+Use the same artifact name for the module you already depend on, and replace the group ID:
+
+[cols="1,1",options="header"]
+|===
+|Old coordinates
+|New coordinates
+
+|`io.confluent.parallelconsumer:parallel-consumer-core`
+|`io.plurima.parallelconsumer:parallel-consumer-core`
+
+|`io.confluent.parallelconsumer:parallel-consumer-reactor`
+|`io.plurima.parallelconsumer:parallel-consumer-reactor`
+
+|`io.confluent.parallelconsumer:parallel-consumer-vertx`
+|`io.plurima.parallelconsumer:parallel-consumer-vertx`
+
+|`io.confluent.parallelconsumer:parallel-consumer-mutiny`
+|`io.plurima.parallelconsumer:parallel-consumer-mutiny`
+|===
+
+No import rewrite is required:
+
+[source,java,indent=0]
+----
+import io.confluent.parallelconsumer.ParallelConsumerOptions;
+import io.confluent.parallelconsumer.ParallelStreamProcessor;
+----
+
+If you consumed a snapshot build while testing this fork, remove the Sonatype snapshots repository for release builds and use the released version from Maven Central.
 
 [[common_preparation]]
 === Common Preparation

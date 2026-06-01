@@ -1,7 +1,7 @@
 package io.confluent.parallelconsumer.examples.metrics;
 
 /*-
- * Copyright (C) 2020-2023 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
 
 import com.sun.net.httpserver.HttpServer;

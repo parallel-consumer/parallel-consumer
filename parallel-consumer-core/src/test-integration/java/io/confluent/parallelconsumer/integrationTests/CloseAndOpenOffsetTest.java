@@ -1,8 +1,8 @@
-package io.confluent.parallelconsumer.integrationTests;
-/*-
- * Copyright (C) 2020-2022 Confluent, Inc.
- */
 
+/*-
+ * Copyright (C) 2020-2026 Parallel Consumer Community
+ */
+package io.confluent.parallelconsumer.integrationTests;
 import io.confluent.csid.utils.Range;
 import io.confluent.parallelconsumer.FakeRuntimeException;
 import io.confluent.parallelconsumer.ParallelConsumerOptions;

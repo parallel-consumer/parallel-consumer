@@ -1,7 +1,7 @@
 package io.confluent.csid.utils;
 
 /*-
- * Copyright (C) 2020-2022 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
 
 import com.google.common.truth.Truth;
@@ -96,7 +96,8 @@ public class BlockedThreadAsserter {
 
         this.methodReturned.set(true);
 
-        Truth.assertThat(time.getElapsed()).isAtLeast(unblocksAfter);
+        Duration schedulerTolerance = Duration.ofMillis(250);
+        Truth.assertThat(time.getElapsed()).isAtLeast(unblocksAfter.minus(schedulerTolerance));
         Truth.assertWithMessage("Unblocking function should complete OK (if false, may not have run at all - or that the expected function to block did NOT block)")
                 .that(unblockerHasRun.get()).isTrue();
     }

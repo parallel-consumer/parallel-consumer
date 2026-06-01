@@ -1,7 +1,7 @@
 package io.confluent.parallelconsumer.reactor;
 
 /*-
- * Copyright (C) 2020-2022 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
 
 import io.confluent.parallelconsumer.ParallelConsumerOptions;

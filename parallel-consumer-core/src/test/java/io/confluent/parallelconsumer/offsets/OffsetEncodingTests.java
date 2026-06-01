@@ -1,7 +1,7 @@
 package io.confluent.parallelconsumer.offsets;
 
 /*-
- * Copyright (C) 2020-2023 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
 
 import com.google.common.truth.Truth;
@@ -174,7 +174,7 @@ public class OffsetEncodingTests extends ParallelEoSStreamProcessorTestBase {
     @ParameterizedTest
     @EnumSource(OffsetEncoding.class)
     // needed due to static accessors in parallel tests
-    @ResourceLock(value = OffsetMapCodecManager.METADATA_DATA_SIZE_RESOURCE_LOCK, mode = READ)
+    @ResourceLock(value = OffsetMapCodecManager.METADATA_DATA_SIZE_RESOURCE_LOCK, mode = READ_WRITE)
     // depends on OffsetMapCodecManager#DefaultMaxMetadataSize
     @ResourceLock(value = OffsetSimultaneousEncoder.COMPRESSION_FORCED_RESOURCE_LOCK, mode = READ_WRITE)
     void ensureEncodingGracefullyWorksWhenOffsetsAreVeryLargeAndNotSequential(OffsetEncoding encoding) {
@@ -182,9 +182,10 @@ public class OffsetEncodingTests extends ParallelEoSStreamProcessorTestBase {
                 not(in(of(ByteArray, ByteArrayCompressed, KafkaStreams, KafkaStreamsV2)))); // byte array not currently used
         var encodingsThatFail = UniLists.of(BitSet, BitSetCompressed, BitSetV2, RunLength, RunLengthCompressed);
 
-        // todo don't use static public accessors to change things - makes parallel testing harder and is smelly
-        OffsetMapCodecManager.forcedCodec = Optional.of(encoding);
-        OffsetSimultaneousEncoder.compressionForced = true;
+        try {
+            // todo don't use static public accessors to change things - makes parallel testing harder and is smelly
+            OffsetMapCodecManager.forcedCodec = Optional.of(encoding);
+            OffsetSimultaneousEncoder.compressionForced = true;
 
         var records = new ArrayList<ConsumerRecord<String, String>>();
         final int FIRST_SUCCEEDED_OFFSET = 0;
@@ -362,8 +363,10 @@ public class OffsetEncodingTests extends ParallelEoSStreamProcessorTestBase {
                 }
             }
         }
-
-        OffsetSimultaneousEncoder.compressionForced = false;
+        } finally {
+            OffsetMapCodecManager.forcedCodec = Optional.empty();
+            OffsetSimultaneousEncoder.compressionForced = false;
+        }
     }
 
     /**

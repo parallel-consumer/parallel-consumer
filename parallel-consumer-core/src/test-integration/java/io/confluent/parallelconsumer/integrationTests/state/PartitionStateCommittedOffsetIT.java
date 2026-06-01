@@ -1,8 +1,8 @@
-package io.confluent.parallelconsumer.integrationTests.state;
 
 /*-
- * Copyright (C) 2020-2022 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
+package io.confluent.parallelconsumer.integrationTests.state;
 
 import com.google.common.truth.StringSubject;
 import io.confluent.csid.utils.JavaUtils;

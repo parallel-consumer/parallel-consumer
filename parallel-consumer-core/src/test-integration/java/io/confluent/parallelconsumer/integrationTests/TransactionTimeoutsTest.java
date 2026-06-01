@@ -1,8 +1,8 @@
-package io.confluent.parallelconsumer.integrationTests;
 
 /*-
- * Copyright (C) 2020-2023 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
+package io.confluent.parallelconsumer.integrationTests;
 
 import com.google.common.truth.Truth;
 import io.confluent.csid.utils.LatchTestUtils;

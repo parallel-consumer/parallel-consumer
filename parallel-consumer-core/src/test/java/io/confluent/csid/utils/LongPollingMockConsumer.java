@@ -1,7 +1,7 @@
 package io.confluent.csid.utils;
 
 /*-
- * Copyright (C) 2020-2024 Confluent, Inc.
+ * Copyright (C) 2020-2026 Parallel Consumer Community
  */
 import io.confluent.parallelconsumer.internal.AbstractParallelEoSStreamProcessor;
 import lombok.Getter;
@@ -186,12 +186,18 @@ public class LongPollingMockConsumer<K, V> extends MockConsumer<K, V> {
         }
     }
 
+    private boolean mockConsumerRebalanceNotifiesListeners() throws NoSuchFieldException {
+        Field rebalanceListenerField = SubscriptionState.class.getDeclaredField("rebalanceListener"); //NoSuchFieldException
+        return Optional.class.isAssignableFrom(rebalanceListenerField.getType()); // kafka-clients >= 3.7.0
+    }
+
     public void subscribeWithRebalanceAndAssignment(final List<String> topics, int partitions) {
         List<TopicPartition> topicPartitions = topics.stream()
                 .flatMap(y -> IntStream.range(0, partitions).boxed()
                         .map(x -> new TopicPartition(y, x)))
                 .collect(Collectors.toList());
         rebalance(topicPartitions);
+        fireAssignmentForLegacyMockConsumer(topicPartitions);
 
         //
         HashMap<TopicPartition, Long> beginningOffsets = new HashMap<>();
@@ -199,6 +205,16 @@ public class LongPollingMockConsumer<K, V> extends MockConsumer<K, V> {
             beginningOffsets.put(tp, 0L);
         }
         super.updateBeginningOffsets(beginningOffsets);
+    }
+
+    @SneakyThrows
+    private void fireAssignmentForLegacyMockConsumer(List<TopicPartition> topicPartitions) {
+        if (!mockConsumerRebalanceNotifiesListeners()) {
+            ConsumerRebalanceListener rebalanceListener = getRebalanceListener();
+            if (rebalanceListener != null) {
+                rebalanceListener.onPartitionsAssigned(topicPartitions);
+            }
+        }
     }
 
     @SneakyThrows

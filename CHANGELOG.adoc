@@ -14,6 +14,15 @@ ifndef::github_name[]
 toc::[]
 endif::[]
 
+== 0.5.4.0
+
+=== Release
+
+* Publish community fork under the `io.plurima.parallelconsumer` Maven group.
+* Add Sonatype Central snapshot and release publishing configuration.
+* Update module metadata, SCM, issue tracker, and Maven usage documentation for the community fork.
+* Add upgrade guidance for moving from `io.confluent.parallelconsumer` Maven coordinates to `io.plurima.parallelconsumer`.
+
 == 0.5.3.4
 
 === Fixes
