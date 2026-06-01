@@ -2,15 +2,7 @@
 /*-
  * Copyright (C) 2020-2026 Parallel Consumer Community
  */
-
-/*-
- * Copyright (C) 2020-2022 Parallel Consumer Community
- */
 package io.confluent.parallelconsumer.vertx.integrationTests;
-
-/*-
- * Copyright (C) 2020-2022 Confluent, Inc.
- */
 
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.MappingBuilder;

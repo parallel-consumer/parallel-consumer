@@ -2,19 +2,7 @@
 /*-
  * Copyright (C) 2020-2026 Parallel Consumer Community
  */
-
-/*-
- * Copyright (C) 2020-2024 Parallel Consumer Community
- */
-
-/*-
- * Copyright (C) 2020-2024 Confluent, Inc.
- */
 package io.confluent.parallelconsumer.integrationTests.utils;
-
-/*-
- * Copyright (C) 2020-2022 Confluent, Inc.
- */
 
 import io.confluent.parallelconsumer.ParallelConsumerOptions;
 import io.confluent.parallelconsumer.ParallelConsumerOptions.CommitMode;

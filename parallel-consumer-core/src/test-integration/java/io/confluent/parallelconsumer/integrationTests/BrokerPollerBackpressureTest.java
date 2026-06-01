@@ -2,14 +2,6 @@
 /*-
  * Copyright (C) 2020-2026 Parallel Consumer Community
  */
-
-/*-
- * Copyright (C) 2020-2024 Parallel Consumer Community
- */
-
-/*-
- * Copyright (C) 2020-2024 Confluent, Inc.
- */
 package io.confluent.parallelconsumer.integrationTests;
 
 import io.confluent.csid.utils.ThreadUtils;

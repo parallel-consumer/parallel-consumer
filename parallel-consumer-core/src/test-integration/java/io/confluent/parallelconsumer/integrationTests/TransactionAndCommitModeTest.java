@@ -2,15 +2,7 @@
 /*-
  * Copyright (C) 2020-2026 Parallel Consumer Community
  */
-
-/*-
- * Copyright (C) 2020-2024 Parallel Consumer Community
- */
 package io.confluent.parallelconsumer.integrationTests;
-/*-
- * Copyright (C) 2020-2024 Confluent, Inc.
- */
-
 import io.confluent.csid.utils.ArgumentSetsBuilder;
 import io.confluent.csid.utils.ProgressBarUtils;
 import io.confluent.csid.utils.ProgressTracker;
