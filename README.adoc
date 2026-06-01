@@ -438,6 +438,60 @@ Where `${project.version}` is the version to be used:
             <version>${project.version}</version>
         </dependency>
 
+[[upgrade_from_confluent_coordinates]]
+=== Upgrading from Confluent Coordinates
+
+The community fork is published with new Maven coordinates, but the Java package names are unchanged.
+Application code should continue to import classes from `io.confluent.parallelconsumer`.
+
+For Maven users, change only the dependency coordinates:
+
+[source,xml,indent=0]
+----
+<dependency>
+    <groupId>io.plurima.parallelconsumer</groupId>
+    <artifactId>parallel-consumer-core</artifactId>
+    <version>0.5.4.0</version>
+</dependency>
+----
+
+For Gradle users:
+
+[source,groovy,indent=0]
+----
+implementation "io.plurima.parallelconsumer:parallel-consumer-core:0.5.4.0"
+----
+
+Use the same artifact name for the module you already depend on, and replace the group ID:
+
+[cols="1,1",options="header"]
+|===
+|Old coordinates
+|New coordinates
+
+|`io.confluent.parallelconsumer:parallel-consumer-core`
+|`io.plurima.parallelconsumer:parallel-consumer-core`
+
+|`io.confluent.parallelconsumer:parallel-consumer-reactor`
+|`io.plurima.parallelconsumer:parallel-consumer-reactor`
+
+|`io.confluent.parallelconsumer:parallel-consumer-vertx`
+|`io.plurima.parallelconsumer:parallel-consumer-vertx`
+
+|`io.confluent.parallelconsumer:parallel-consumer-mutiny`
+|`io.plurima.parallelconsumer:parallel-consumer-mutiny`
+|===
+
+No import rewrite is required:
+
+[source,java,indent=0]
+----
+import io.confluent.parallelconsumer.ParallelConsumerOptions;
+import io.confluent.parallelconsumer.ParallelStreamProcessor;
+----
+
+If you consumed a snapshot build while testing this fork, remove the Sonatype snapshots repository for release builds and use the released version from Maven Central.
+
 [[common_preparation]]
 === Common Preparation
 
@@ -1553,6 +1607,7 @@ endif::[]
 * Publish community fork under the `io.plurima.parallelconsumer` Maven group.
 * Add Sonatype Central snapshot and release publishing configuration.
 * Update module metadata, SCM, issue tracker, and Maven usage documentation for the community fork.
+* Add upgrade guidance for moving from `io.confluent.parallelconsumer` Maven coordinates to `io.plurima.parallelconsumer`.
 
 == 0.5.3.4
 
